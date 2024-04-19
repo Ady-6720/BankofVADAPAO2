@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - BankOfVadapao</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #333; /* Dark background for consistency */
+            color: #fff; /* White text color for contrast */
+        }
+
+        header {
+            background-color: #004d99; /* Blue header to match the sign-in theme */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .dashboard-container {
+            display: flex;
+            justify-content: center; /* Center the single module */
+            padding: 20px;
+        }
+
+        .module {
+            background: #fff; /* White background for content modules */
+            color: #333; /* Dark text for readability */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 100%; /* Adjust width to take full container width */
+            max-width: 600px; /* Set a max width for aesthetics */
+        }
+
+        h2 {
+            color: #004d99; /* Blue color for titles */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: #333; /* Dark text for table */
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f1f1f1;
+        }
+
+        .form-input {
+            padding: 8px;
+            margin: 10px 0;
+            width: 100%;
+            box-sizing: border-box;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #e0ecfb; /* Light blue background for inputs */
+        }
+
+        button {
+            background-color: #0066ff; /* Blue button to match sign-in */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 16px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color .3s;
+        }
+
+        button:hover {
+            background-color: #005ce6; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard - Manage Managers</h1>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Manager Management Module -->
+        <div class="module">
+            <h2>Manager Management</h2>
+            <div class="form-container">
+                <!-- Form action updated to point to Spring Boot controller -->
+                <form action="/managers" method="POST">
+                    <input type="text" name="managerId" class="form-input" placeholder="Manager ID for Update/Delete" required>
+                    <input type="text" name="managerName" class="form-input" placeholder="Manager Name" required>
+                    <input type="email" name="managerEmail" class="form-input" placeholder="Manager Email" required>
+                    <input type="text" name="username" class="form-input" placeholder="Username" required>
+                    <input type="password" name="pin" class="form-input" placeholder="6-digit PIN" pattern="[0-9]{6}" required>
+                    <button type="submit" name="action" value="add">Add Manager</button>
+                    <button type="submit" name="action" value="delete">Delete Manager</button>
+                </form>
+            </div>
+            <table id="managerTable">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>PIN</th>
+                </tr>
+                <!-- Sample Row -->
+                <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>johndoe@example.com</td>
+                    <td>johndoe</td>
+                    <td>123456</td>
+                </tr>
+                <!-- Additional rows to be dynamically generated from the database -->
+            </table>
+        </div>
+    </div>
+</body>
+</html>

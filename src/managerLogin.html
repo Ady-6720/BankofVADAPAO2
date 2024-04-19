@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - BankOfVadapao</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .login-form {
+            background-color: #fff;
+            padding: 2rem;
+            width: 100%;
+            max-width: 350px;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .input {
+            width: 100%;
+            padding: 10px;
+            font-size: 0.9rem;
+            border-radius: 0.5rem;
+            border: 1px solid #ccc;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4F46E5;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color .3s;
+        }
+
+        .login-button:hover {
+            background-color: #4054B2;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <h2 class="login-title">Manager Login</h2>
+        <form action="process_admin_login.php" method="POST">
+            <div class="input-container">
+                <input type="text" class="input" name="username" placeholder="Username" required>
+            </div>
+            <div class="input-container">
+                <input type="password" class="input" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-button">Log In</button>
+        </form>
+    </div>
+</body>
+</html>

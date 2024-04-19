@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank of Vadapao Dashboard</title>
+    <style>
+        body, h1, h2 {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px; /* Adjust as needed */
+        }
+
+        .login-buttons button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            margin-left: 10px;
+        }
+
+        .login-buttons button:hover {
+            background-color: #777;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .data-container {
+            background-color: #f2f2f2;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+
+        .data-title {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .data-item {
+            background-color: white;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <img src="assets/vadapao.png" alt="Bank of Vadapao Logo" class="logo">
+            <div class="login-buttons">
+                <button onclick="location.href='adminLogin.html';">Admin Login</button>
+                <button onclick="location.href='managerLogin.html';">Manager Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <h1>Welcome to Bank of Vadapao Dashboard</h1>
+
+        <div id="branches-list" class="data-container">
+            <h2 class="data-title">Branches and Locations</h2>
+        </div>
+
+        <div id="managers-list" class="data-container">
+            <h2 class="data-title">Managers and Their Branches</h2>
+        </div>
+
+        <div id="top-credit-cards" class="data-container">
+            <h2 class="data-title">Top 5 Branches - Credit Cards Sold</h2>
+        </div>
+
+        <div id="top-deposits" class="data-container">
+            <h2 class="data-title">Top 5 Branches - Deposits</h2>
+        </div>
+
+        <div id="highest-rated" class="data-container">
+            <h2 class="data-title">Highest Rated Branches</h2>
+        </div>
+
+        <div id="top-branches" class="data-container">
+            <h2 class="data-title">Top 10 Branches by Ratings</h2>
+        </div>
+
+        <div id="worst-branches" class="data-container">
+            <h2 class="data-title">Branches Needing Improvement</h2>
+        </div>
+    </main>
+
+    <script>
+        // Function to fetch data and render to the page
+        function fetchDataAndRender(endpoint, elementId) {
+            fetch(endpoint)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const container = document.getElementById(elementId);
+                    // Assuming data is an array of objects
+                    data.forEach(item => {
+                        // Create and append the content to the container
+                        // This will depend on the structure of your data
+                        const div = document.createElement('div');
+                        div.className = 'data-item';
+                        div.textContent = item.name; // replace 'name' with the actual property name
+                        container.appendChild(div);
+                    });
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
+        }
+
+        // DOMContentLoaded event to ensure the DOM is fully loaded before fetching
+        document.addEventListener('DOMContentLoaded', () => {
+            // Replace '/api/branches' with the actual endpoint for your Spring Boot application
+            fetchDataAndRender('/api/branches', 'branches-list');
+            fetchDataAndRender('/api/managers', 'managers-list');
+            // ... and so on for each endpoint and container
+        });
+    </script>
+</body>
+</html>

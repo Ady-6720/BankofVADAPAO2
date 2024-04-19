@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #333; /* Dark background for consistency */
+            color: #fff; /* White text color for contrast */
+        }
+
+        header {
+            background-color: #ff0749; /* Blue header to match the sign-in theme */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            grid-gap: 90px; /* Gap between modules */
+            padding: 40px;
+        }
+
+        .module {
+            background: #fff; /* White background for content modules */
+            color: #333; /* Dark text for readability */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 100%; /* Adjust width to take full container width */
+        }
+
+        h2 {
+            color: #a52751; /* Blue color for titles */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: #333; /* Dark text for table */
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f1f1f1;
+        }
+
+        .form-input {
+            padding: 8px;
+            margin: 10px 0;
+            width: 100%;
+            box-sizing: border-box;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #e0ecfb; /* Light blue background for inputs */
+        }
+
+        button {
+            background-color: #a90e2f; /* Blue button to match sign-in */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 16px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color .3s;
+        }
+
+        button:hover {
+            background-color: #f0004c; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Manager Dashboard</h1>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Modify Branch Details Module -->
+        <div class="module">
+            <h2>Modify Branch Details</h2>
+            <div class="form-container">
+                <form action="#" th:action="@{/updateBranch}" method="post">
+                    <input type="text" name="branchId" class="form-input" placeholder="Branch ID" required>
+                    <input type="text" name="branchAddress" class="form-input" placeholder="New Address">
+                    <input type="text" name="branchContact" class="form-input" placeholder="New Contact Number">
+                    <button type="submit">Update Branch Details</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Update Credit Card Sold Data Module -->
+        <div class="module">
+            <h2>Update Credit Card Sold Data</h2>
+            <div class="form-container">
+                <form action="#" th:action="@{/updateCreditCardSold}" method="post">
+                    <input type="text" name="branchId" class="form-input" placeholder="Branch ID" required>
+                    <input type="text" name="creditCardSold" class="form-input" placeholder="New Credit Card Sold Data">
+                    <button type="submit">Update Credit Card Sold</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Update Deposits Data Module -->
+        <div class="module">
+            <h2>Update Deposits Data</h2>
+            <div class="form-container">
+                <form action="#" th:action="@{/updateDeposits}" method="post">
+                    <input type="text" name="branchId" class="form-input" placeholder="Branch ID" required>
+                    <input type="text" name="deposits" class="form-input" placeholder="New Deposits Data">
+                    <button type="submit">Update Deposits</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Add Employees Module -->
+        
+    </div>
+</body>
+</html>

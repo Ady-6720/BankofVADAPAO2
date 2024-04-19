@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - BankOfVadapao</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form {
+            background-color: #121212;
+            padding: 2rem;
+            width: 100%;
+            max-width: 350px;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            color: #fff; /* Updated text color for visibility */
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .input-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .input-container input {
+            width: 100%;
+            padding: 10px;
+            font-size: 0.875rem;
+            border-radius: 0.5rem;
+            border: 1px solid #ccc;
+            background: #2e2e2e; /* Lightened background for input */
+            color: #fff; /* White text for visibility */
+        }
+
+        .submit {
+            width: 100%;
+            padding: 10px;
+            background-color: #4F46E5;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .signup-link {
+            font-size: 0.875rem;
+            color: #bbb;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .signup-link a {
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <form class="form" onsubmit="return validateLogin()">
+        <p class="form-title">Sign in to your account</p>
+        <div class="input-container">
+          <input id="username" placeholder="Enter username" type="text" required>
+        </div>
+        <div class="input-container">
+          <input id="password" placeholder="Enter password" type="password" required>
+        </div>
+        <button type="submit" class="submit">
+          Sign in
+        </button>
+    </form>
+
+    <script>
+        function validateLogin() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            if ((username === 'Gauri007' && password === '811811') || (username === 'Vaishnavi008' && password === '911911')) {
+                // Redirect to the dashboard and pass the username
+                window.location.href = 'adminDashboard.html?admin=' + encodeURIComponent(username);
+                return false; // Prevent default form submission
+            } else {
+                alert('Invalid credentials. Please try again.');
+                return false; // Prevent form submission
+            }
+        }
+    </script>
+</body>
+</html>
